@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	{{ include('page/meta.html') }}
+
+	<title>{{title}}</title>
+
+	{{ include('page/styles.html') }}
+	
+	{{ include('page/google_header.html') }}
+</head>
+<body>
+	{% block header %}
+		{{ include('page/header.html') }}
+		{{ include('page/messages.html') }}
+	{% endblock %}
+
+	{% block body %}
+	  <h1>Erdiko-Slim</h1>
+	  <div>A micro MVC framework for PHP</div>
+	{% endblock %}
+
+	{% block footer %}
+		{{ include('page/footer.html') }}
+	{% endblock %}
+
+	{% block scripts %}
+		{{ include('page/scripts.html') }}
+		{{ include('page/google_body.html') }}
+	{% endblock %}
+</body>
+</html>

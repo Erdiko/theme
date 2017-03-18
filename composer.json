@@ -1,0 +1,21 @@
+{
+    "name":"erdiko/theme",
+    "description": "Erdiko base theme",
+    "keywords": ["theme", "theme-engine", "erdiko"],
+    "homepage": "http://erdiko.org",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arroyo Labs",
+            "email": "info@arroyolabs.com"
+        }
+    ],
+    "config": {
+        "minimum-stability": "dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "erdiko\\theme\\": "src/"
+        }
+    }
+}

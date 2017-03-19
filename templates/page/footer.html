@@ -5,11 +5,11 @@
         <div class="col-lg-12">
           <ul class="list-inline">
               <li class="pull-right"><a href="#top">Back to top</a></li>
-              {% for item in menu.footer %}
+              {% for item in application.menu.footer %}
                   <li><a href="{{item.href}}">{{item.title}}</a></li>
               {% endfor %}
           </ul>
-          <p>{{site.copyright}} {{site.full_name}}<br />
+          <p>{{application.copyright}} {{application.full_name}}<br />
   Powered by <a href="https://github.com/ArroyoLabs/erdiko" target="_blank">Erdiko</a></p>
         </div>
       </div>

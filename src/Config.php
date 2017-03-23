@@ -20,9 +20,30 @@ class Config extends \erdiko\Config
      * @param string $context
      * @return array $config
      */
-    public function getThemeConfig(string $name) : array
+    public static function get(string $name = 'application', string $context = null): array
     {
-        $filename = $this->folder."{$name}/theme.json";
-        return $this->getConfigFile($filename);
+        $config = parent::get($name, $context);
+
+        if (isset($config['theme']['namespace'])) {
+            $themeConfig = \erdiko\theme\Config::getTheme($config['theme']['namespace']);
+        } else {
+            throw new \Exception("No theme specified, cannot load config");
+        }
+
+        return [$name => $config, 'theme' => $themeConfig];
+    }
+
+    /**
+     * Get configuration
+     *
+     * @param string $name
+     * @param string $context
+     * @return array $config
+     */
+    public static function getTheme(string $name) : array
+    {
+        $folder = ERDIKO_ROOT;
+        $filename = $folder."/{$name}/theme.json";
+        return static::getConfigFile($filename);
     }
 }

@@ -1,6 +1,6 @@
 {
     "name":"erdiko/theme",
-    "description": "Erdiko base theme",
+    "description": "Erdiko micro theming engine, based on twig",
     "keywords": ["theme", "theme-engine", "erdiko"],
     "homepage": "http://erdiko.org",
     "license": "MIT",

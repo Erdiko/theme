@@ -1,1 +1,3 @@
-  <link rel='stylesheet' href='/themes/bootstrap/css/main.min.css' type='text/css' />
+{% for style in theme.styles %}
+  <link rel='stylesheet' href='{{style.uri}}' type='text/css' />
+{% endfor %}

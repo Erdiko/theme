@@ -10,8 +10,7 @@
 </head>
 <body>
   {% block header %}
-    {{ include('page/header.html') }}
-    {{ include('components/messages.html') }}
+    {{ include('page/messages.html') }}
   {% endblock %}
 
   {% block body %}
@@ -20,7 +19,6 @@
   {% endblock %}
 
   {% block footer %}
-    {{ include('page/footer.html') }}
   {% endblock %}
 
   {% block scripts %}

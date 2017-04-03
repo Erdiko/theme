@@ -1,7 +1,8 @@
 <?php
 /**
  * Controller traits
- * Add this to any controller that uses the theme engine
+ * Add this to any controller that uses the theme engine.
+ * Will work with Erdiko and Slim, have not tested in other frameworks.
  *
  * @package     erdiko/theme/traits
  * @copyright   2012-2017 Arroyo Labs, Inc. http://www.arroyolabs.com

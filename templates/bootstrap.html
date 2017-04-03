@@ -2,22 +2,26 @@
 <html lang="{{application.language}}">
 <head>
   {{ include('page/meta.html') }}
-
   <title>{{page.title}}</title>
-
   {{ include('page/styles.html') }}
   {{ include('page/google_header.html') }}
 </head>
 <body>
-  {% block header %}
-    {{ include('page/header.html') }}
-    {{ include('components/messages.html') }}
-  {% endblock %}
+  <div id="wrap">
+    {% block header %}
+      {{ include('page/header.html') }}
+      {{ include('components/messages.html') }}
+    {% endblock %}
 
-  {% block body %}
-    <h1>{{page.title}}</h1>
-    <div>{{page.description}}</div>
-  {% endblock %}
+    <div id="header-push"></div>
+    
+    {% block body %}
+      <h1>{{page.title}}</h1>
+      <div>{{page.description}}</div>
+    {% endblock %}
+    
+    <div id="footer-push"></div>
+  </div>
 
   {% block footer %}
     {{ include('page/footer.html') }}

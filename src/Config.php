@@ -25,12 +25,20 @@ class Config extends \erdiko\Config
         $config = parent::get($name, $context);
 
         if (isset($config['theme']['namespace'])) {
-            $themeConfig = \erdiko\theme\Config::getTheme($config['theme']['namespace']);
+            $themeConfig = static::getTheme($config['theme']['namespace']);
         } else {
             throw new \Exception("No theme specified, cannot load config");
         }
+        
+        return [$name => $config, 'theme' => static::mergeDefaults($themeConfig, $config)];
+    }
 
-        return [$name => $config, 'theme' => $themeConfig];
+    public function mergeDefaults($themeConfig, $config)
+    {
+        if(!empty($config['theme']['defaults']))
+            $themeConfig = array_replace_recursive($themeConfig, $config['theme']['defaults']);
+
+        return $themeConfig;
     }
 
     /**

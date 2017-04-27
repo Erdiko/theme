@@ -3,14 +3,24 @@
 {% block body %}
   <div class="container">
     <div class="row">
+      <div class="col-12 col-md-12" role="main">
+        {% block multicolumn_header %}
+          <h1>{{page.title}}</h1>
+          <div>{{page.description}}</div>
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
       <div class="col-md-6" id="column-left">
         {% block column1 %}
-          <p>[Block column1 goes here]</p>
+          <p>[Block 'column1' goes here]</p>
         {% endblock %}
       </div>
       <div class="col-md-6" id="column-main">
         {% block column2 %}
-          <p>[Block column2 goes here]</p>
+          <p>[Block 'column2' goes here]</p>
         {% endblock %}
       </div>
     </div>

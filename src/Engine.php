@@ -91,6 +91,20 @@ class Engine
             return null;
     }
 
+    /**
+     * Add additional meta fields
+     * @param array $meta
+     */
+    public function addMeta(array $meta)
+    {
+        if(isset($this->themeData['application']['meta'])) {
+            $this->themeData['application']['meta'] = 
+                array_replace($this->themeData['application']['meta'], $meta);
+        } else {
+            $this->themeData['application']['meta'] = $meta;
+        }
+    }
+
     public function getDefaultView()
     {
         if(isset($this->themeData['application']['theme']['defaults']['view']))

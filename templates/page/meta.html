@@ -1,7 +1,7 @@
 {% block meta %}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  {% for name, content in application.meta %}
+  {% for name, content in theme.meta %}
     <meta name="{{name}}" content="{{content}}">
   {% endfor %}
 {% endblock %}

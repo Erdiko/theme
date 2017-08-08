@@ -16,11 +16,30 @@ class Config extends \erdiko\Config
     /**
      * Get configuration
      *
+     * @param array $settings from for theme
+     */
+    public static function get(array $settings): array
+    {
+        if (isset($settings['namespace'])) {
+            $themeConfig = static::getTheme($settings['namespace']);
+        } else {
+            throw new \Exception("No theme specified, cannot load theme setting");
+        }
+
+        // Merge theme settings into theme config
+        $themeConfig = array_replace_recursive($themeConfig, $settings);
+
+        return $themeConfig;
+    }
+
+    /**
+     * Get configuration
+     *
      * @param string $name
      * @param string $context
      * @return array $config
      */
-    public static function get(string $name = 'application', string $context = null): array
+    public static function get_old(string $name = 'application', string $context = null): array
     {
         $config = parent::get($name, $context);
 
@@ -29,11 +48,11 @@ class Config extends \erdiko\Config
         } else {
             throw new \Exception("No theme specified, cannot load config");
         }
-        
+
         return [$name => $config, 'theme' => static::mergeDefaults($themeConfig, $config)];
     }
 
-    public function mergeDefaults($themeConfig, $config)
+    public static function mergeDefaults($themeConfig, $config)
     {
         if(!empty($config['theme']['defaults']))
             $themeConfig = array_replace_recursive($themeConfig, $config['theme']['defaults']);
@@ -50,8 +69,7 @@ class Config extends \erdiko\Config
      */
     public static function getTheme(string $name) : array
     {
-        $folder = ERDIKO_ROOT;
-        $filename = $folder."/{$name}/theme.json";
+        $filename = getenv("ERDIKO_ROOT")."/{$name}/theme.json";
         return static::getConfigFile($filename);
     }
 }

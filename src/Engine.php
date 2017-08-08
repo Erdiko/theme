@@ -10,14 +10,14 @@
  */
 namespace erdiko\theme;
 
-
 class Engine
 {
     protected $themeData = null;
 
-    public function __construct()
+    public function __construct($controller)
     {
-        $this->themeData = \erdiko\theme\Config::get();
+        // Or we could read (require) the theme.php file directly
+        $this->themeData = \erdiko\theme\Config::get($controller->getThemeSettings());
         $this->themeData['page'] = [];
     }
 
@@ -98,7 +98,7 @@ class Engine
     public function addMeta(array $meta)
     {
         if(isset($this->themeData['application']['meta'])) {
-            $this->themeData['application']['meta'] = 
+            $this->themeData['application']['meta'] =
                 array_replace($this->themeData['application']['meta'], $meta);
         } else {
             $this->themeData['application']['meta'] = $meta;
@@ -107,11 +107,11 @@ class Engine
 
     public function getDefaultView()
     {
-        if(isset($this->themeData['application']['theme']['defaults']['view']))
-            $view = $this->themeData['application']['theme']['defaults']['view'];
+        if(isset($this->themeData['theme']['view']))
+            $view = $this->themeData['theme']['view'];
         elseif(isset($this->themeData['theme']['view']))
             $view = $this->themeData['theme']['view'];
-        else 
+        else
             $view = "default.html";
 
         return $view;

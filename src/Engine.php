@@ -12,12 +12,13 @@ namespace erdiko\theme;
 
 class Engine
 {
-    protected $themeData = null;
+    protected $themeData = array();
 
     public function __construct($controller)
     {
         // Or we could read (require) the theme.php file directly
-        $this->themeData = \erdiko\theme\Config::get($controller->getThemeSettings());
+        $this->themeData['theme'] = \erdiko\theme\Config::get($controller->getThemeSettings());
+
         $this->themeData['page'] = [];
     }
 
@@ -108,8 +109,6 @@ class Engine
     public function getDefaultView()
     {
         if(isset($this->themeData['theme']['view']))
-            $view = $this->themeData['theme']['view'];
-        elseif(isset($this->themeData['theme']['view']))
             $view = $this->themeData['theme']['view'];
         else
             $view = "default.html";

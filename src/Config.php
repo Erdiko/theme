@@ -11,7 +11,7 @@
 namespace erdiko\theme;
 
 
-class Config extends \erdiko\Config
+class Config
 {
     /**
      * Get configuration
@@ -39,37 +39,33 @@ class Config extends \erdiko\Config
      * @param string $context
      * @return array $config
      */
-    public static function get_old(string $name = 'application', string $context = null): array
-    {
-        $config = parent::get($name, $context);
-
-        if (isset($config['theme']['namespace'])) {
-            $themeConfig = static::getTheme($config['theme']['namespace']);
-        } else {
-            throw new \Exception("No theme specified, cannot load config");
-        }
-
-        return [$name => $config, 'theme' => static::mergeDefaults($themeConfig, $config)];
-    }
-
-    public static function mergeDefaults($themeConfig, $config)
-    {
-        if(!empty($config['theme']['defaults']))
-            $themeConfig = array_replace_recursive($themeConfig, $config['theme']['defaults']);
-
-        return $themeConfig;
-    }
-
-    /**
-     * Get configuration
-     *
-     * @param string $name
-     * @param string $context
-     * @return array $config
-     */
     public static function getTheme(string $name) : array
     {
         $filename = getenv("ERDIKO_ROOT")."/{$name}/theme.json";
         return static::getConfigFile($filename);
+    }
+
+    /**
+     * Read JSON config file and return array
+     *
+     * @param string $file
+     * @return array $config
+     */
+    public static function getConfigFile($file): array
+    {
+        $file = addslashes($file);
+        if (is_file($file)) {
+            $data = str_replace("\\", "\\\\", file_get_contents($file));
+            $json = json_decode($data, true);
+
+            if (empty($json)) {
+                throw new \Exception("Config file has a json parse error, $file");
+            }
+
+        } else {
+            throw new \Exception("Config file not found, $file");
+        }
+
+        return $json;
     }
 }

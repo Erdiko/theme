@@ -12,13 +12,12 @@ namespace erdiko\theme;
 
 class Engine
 {
-    protected $themeData = array();
+    protected $themeData = [];
 
-    public function __construct($controller)
+    public function __construct($settings)
     {
-        // Or we could read (require) the theme.php file directly
-        $this->themeData['theme'] = \erdiko\theme\Config::get($controller->getThemeSettings());
-
+        // Or we could read (require) the theme.php settings file directly
+        $this->themeData['theme'] = \erdiko\theme\Config::get($settings);
         $this->themeData['page'] = [];
     }
 

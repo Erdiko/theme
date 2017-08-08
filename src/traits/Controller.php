@@ -12,21 +12,37 @@ namespace erdiko\theme\traits;
 
 trait Controller
 {
+    protected $theme = null;
+
     /**
-     * Render 
-     * Render page based off of the application and theme configs
-     * At todo move to a trait, \erdiko\theme\traits\Controller
-     */ 
-    public function render($response, $view = null, \erdiko\theme\Engine $themeEngine = null) 
+     * Get theme
+     * Get the theme Engine object, instantiate object if null
+     */
+    protected function getThemeEngine()
     {
-        if(empty($themeEngine))
-            $themeEngine = new \erdiko\theme\Engine;
+        if($this->theme === null)
+            $this->theme = new \erdiko\theme\Engine( $this->container->get('settings')['theme'] );
+
+        return $this->theme;
+    }
+
+    /**
+     * Render
+     * Render page based off of the application and theme configs
+     * @todo use DI container to grab the theme Engine
+     */
+    protected function render($response, string $view = null, \erdiko\theme\Engine $theme = null)
+    {
+        if(empty($theme))
+            $theme = $this->getThemeEngine();
 
         if(empty($view)) {
-            $view = $themeEngine->getDefaultView();
+            $view = $theme->getDefaultView();
         }
-        // $this->container->logger->debug("view: {$view}");
 
-        return $this->container->theme->render($response, $view, $themeEngine->toArray());
-    }    
+        // Debug
+        $this->container->logger->debug("view: {$view}");
+
+        return $this->container->theme->render($response, $view, $theme->toArray());
+    }
 }

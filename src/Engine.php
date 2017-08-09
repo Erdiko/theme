@@ -3,6 +3,7 @@
  * Erdiko Theme Engine
  *
  * Prep data for easy and efficient theme rendering
+ * @todo add theme switcher
  *
  * @package     erdiko\theme
  * @copyright   2012-2017 Arroyo Labs, Inc. http://www.arroyolabs.com

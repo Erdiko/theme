@@ -1,28 +1,25 @@
 {% extends "page.html" %}
 
 {% block body %}
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-7 col-sm-6">
-        <h1>{{page.title}}</h1>
-      </div>
+  <div class="row">
+    <div class="col-lg-8 col-md-7 col-sm-6">
+      <h1>{{page.title}}</h1>
     </div>
-    <div class="row">
-      <div class="col-lg-4 col-md-4 col-sm-4">
-        <div class="list-group table-of-contents">
-          <a class="list-group-item" href="/examples/theme">Theme Engine</a>
-          <a class="list-group-item" href="/examples/onecolumn">1 column Layout</a>
-          <a class="list-group-item" href="/examples/twocolumn">2 column Layout</a>
-          <a class="list-group-item" href="/examples/threecolumn">3 column Layout</a>
-          <a class="list-group-item" href="/examples/carousel">Carousel</a>
-          <a class="list-group-item" href="/examples/flash">Flash Messages</a>
-          <a class="list-group-item" href="/examples/fullpage">Full page</a>
-          <a class="list-group-item" href="/examples/exception">Exception</a>
-        </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4">
+      <div class="list-group table-of-contents">
+        <a class="list-group-item" href="/examples/theme">Theme Engine</a>
+        <a class="list-group-item" href="/examples/onecolumn">1 column Layout</a>
+        <a class="list-group-item" href="/examples/twocolumn">2 column Layout</a>
+        <a class="list-group-item" href="/examples/threecolumn">3 column Layout</a>
+        <a class="list-group-item" href="/examples/flash">Flash Messages</a>
+        <a class="list-group-item" href="/examples/fullpage">Full page</a>
+        <a class="list-group-item" href="/examples/exception">Exception</a>
       </div>
     </div>
   </div>
-  <pre>debug dump:
-      {{dump(_context)}}
-  </pre>
+  <div class="alert alert-secondary">
+    <pre class="pre-scrollable"><code>Debug dump:{{dump(_context)}}</code></pre>
+  </div>
 {% endblock %}

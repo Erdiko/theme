@@ -7,20 +7,18 @@
   {{ include('page/google_header.html') }}
 </head>
 <body>
-  <div id="wrap">
-    {% block header %}
-      {{ include('page/header.html') }}
-      {{ include('components/messages.html') }}
-    {% endblock %}
+  {% block header %}
+  {{ include('page/header.html') }}
+  {{ include('components/messages.html') }}
+  {% endblock %}
 
-    <div id="header-push"></div>
-    
+  <div class="container">
+
     {% block body %}
       <h1>{{page.title}}</h1>
       <div>{{page.description}}</div>
     {% endblock %}
     
-    <div id="footer-push"></div>
   </div>
 
   {% block footer %}

@@ -1,5 +1,6 @@
 <div class="container-fluid">
   <div class="row">
+    <h1>{{page.title}}</h1>
     {% for item in page.items %}
       {{ include('pages/grid/item.html') }}
     {% endfor %}

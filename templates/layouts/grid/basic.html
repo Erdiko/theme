@@ -1,10 +1,7 @@
 <div class="container-fluid">
   <div class="row">
-    <div role="main">
-      <h1>{{page.title}}</h1>
-      {% for item in page.items %}
-        {{ include('pages/grid/item.html') }}
-      {% endfor %}
-    </div>
+    {% for item in page.items %}
+      {{ include('pages/grid/item.html') }}
+    {% endfor %}
   </div>
 </div>

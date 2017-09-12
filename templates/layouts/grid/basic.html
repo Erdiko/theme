@@ -1,8 +1,9 @@
 <div class="container-fluid">
-  <div class="row">
-    <h1>{{page.title}}</h1>
+  <h1>{{page.title}}</h1>
+
+  <div class="card-group">
     {% for item in page.items %}
-      {{ include('pages/grid/item.html') }}
+      {{ include('grid/item.html') }}
     {% endfor %}
   </div>
 </div>

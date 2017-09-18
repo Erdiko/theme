@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="{{application.language}}">
+<html lang="{{theme.application.language}}">
 <head>
   {{ include('page/meta.html') }}
-  <title>{{page.title}}</title>
+  <title>{{page.title}} - {{theme.application.name}}</title>
   {{ include('page/styles.html') }}
   {{ include('page/google_header.html') }}
 </head>
@@ -12,14 +12,12 @@
   {{ include('components/messages.html') }}
   {% endblock %}
 
-  <div class="container">
-
-    {% block body %}
+  {% block body %}
+    <div class="container">
       <h1>{{page.title}}</h1>
       <div>{{page.description}}</div>
-    {% endblock %}
-    
-  </div>
+    </div>
+  {% endblock %}
 
   {% block footer %}
     {{ include('page/footer.html') }}

@@ -1,5 +1,5 @@
 {% block meta %}
-  <meta charset="utf-8">
+  <meta charset="{{theme.application.charset}}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   {% for name, content in theme.meta %}
     <meta name="{{name}}" content="{{content}}">

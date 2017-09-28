@@ -98,11 +98,11 @@ class Engine
      */
     public function addMeta(array $meta)
     {
-        if(isset($this->themeData['application']['meta'])) {
-            $this->themeData['application']['meta'] =
-                array_replace($this->themeData['application']['meta'], $meta);
+        if(isset($this->themeData['theme']['meta'])) {
+            $this->themeData['theme']['meta'] =
+                array_merge($this->themeData['theme']['meta'], $meta);
         } else {
-            $this->themeData['application']['meta'] = $meta;
+            $this->themeData['theme']['meta'] = $meta;
         }
     }
 

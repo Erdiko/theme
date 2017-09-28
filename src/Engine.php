@@ -99,8 +99,7 @@ class Engine
     public function addMeta(array $meta)
     {
         if(isset($this->themeData['theme']['meta'])) {
-            $this->themeData['theme']['meta'] =
-                array_merge($this->themeData['theme']['meta'], $meta);
+            $this->themeData['theme']['meta'] = $meta + $this->themeData['theme']['meta'];
         } else {
             $this->themeData['theme']['meta'] = $meta;
         }
